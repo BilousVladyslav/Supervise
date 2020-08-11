@@ -21,7 +21,8 @@ class AreaSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Area
-        exclude = ['working_now']
+        fields = '__all__'
+        read_only_fields = ['working_now']
 
 
 class AreaSerializerForDrone(serializers.ModelSerializer):
