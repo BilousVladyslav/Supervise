@@ -1,0 +1,9 @@
+.register-user-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.register-user-container > * {
+    margin-top: 5px;
+    width: 80%;
+}

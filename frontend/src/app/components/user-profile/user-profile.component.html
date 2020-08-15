@@ -1,0 +1,48 @@
+<h1 class="text-center p-4 m-0 display-4">{{ 'profile.title' | translate :locale.language }}</h1>
+
+<section class="container  py-3">
+  <form [formGroup]="userProfileForm" (ngSubmit)="onSubmitProfile()" class="user-profile-container">
+
+    <mat-form-field class="form-group mx-auto">
+      <input matInput [value]="user.username" [readonly]="true" placeholder="{{ 'profile.username' | translate:locale.language }}">
+    </mat-form-field>
+
+    <mat-form-field class="form-group mx-auto">
+      <input matInput [value]="user.email" type="text" [readonly]="true" placeholder="{{ 'profile.email' | translate:locale.language }}">
+    </mat-form-field>
+
+    <mat-form-field class="form-group mx-auto">
+      <input matInput formControlName="first_name" [(ngModel)]="user.first_name" placeholder="{{ 'profile.first_name.placeholder' | translate:locale.language }}">
+      <mat-error *ngIf="userProfileForm.controls.first_name.errors && (userProfileForm.controls.first_name.dirty || userProfileForm.controls.first_name.touched)">
+        <mat-error *ngIf="userProfileForm.controls.first_name.errors.required">
+          *{{ 'profile.first_name.required' | translate:locale.language }}
+        </mat-error>
+        <mat-error *ngIf="userProfileForm.controls.first_name.errors.maxlength">
+          *{{ 'profile.first_name.max_length' | translate:locale.language }}
+        </mat-error>
+        <mat-error *ngIf="userProfileForm.controls.first_name.errors.pattern">
+          *{{ 'profile.first_name.regex' | translate:locale.language }}
+        </mat-error>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="form-group mx-auto">
+      <input matInput formControlName="last_name" [(ngModel)]="user.last_name" placeholder="{{ 'profile.last_name.placeholder' | translate:locale.language }}">
+      <mat-error *ngIf="userProfileForm.controls.last_name.errors && (userProfileForm.controls.last_name.dirty || userProfileForm.controls.last_name.touched)">
+        <mat-error *ngIf="userProfileForm.controls.last_name.errors.required">
+          *{{ 'profile.last_name.required' | translate:locale.language }}
+        </mat-error>
+        <mat-error *ngIf="userProfileForm.controls.last_name.errors.maxlength">
+          *{{ 'profile.last_name.max_length' | translate:locale.language }}
+        </mat-error>
+        <mat-error *ngIf="userProfileForm.controls.last_name.errors.pattern">
+          *{{ 'profile.last_name.regex' | translate:locale.language }}
+        </mat-error>
+      </mat-error>
+    </mat-form-field>
+
+    <div class='mx-auto'>
+      <button mat-raised-button color="accent" [disabled]="userProfileForm.invalid" class="mx-auto">{{ 'profile.save' | translate:locale.language }}</button>
+    </div>
+  </form>
+</section>

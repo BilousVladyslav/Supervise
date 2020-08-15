@@ -1,0 +1,26 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" routerLink="/">Supervise</a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+
+    <ul class="navbar-nav" *ngIf="isLogged">
+      <li class="nav-item active">
+        <a routerLink="/profile" class="nav-link mx-2">{{ 'navbar.profile' | translate:locale.language }}</a>
+      </li>
+      <li class="nav-item active">
+        <a routerLink="/workplaces" class="nav-link mx-2">{{ 'navbar.workplaces' | translate:locale.language }}</a>
+      </li>
+    </ul>
+
+    <button *ngIf="isLogged" mat-raised-button (click)="logOut()" class="mx-2">{{ 'navbar.logout' | translate:locale.language }}</button>
+
+    <app-login *ngIf="!isLogged" class="mx-2"></app-login>
+
+    <button mat-raised-button *ngFor="let item of schema" (click)="setLocale(item.locale)" color='primary' class="mx-2">{{ item.text }}</button>
+  
+  </div>
+</nav>
