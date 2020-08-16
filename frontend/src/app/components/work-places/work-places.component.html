@@ -1,0 +1,71 @@
+<div class='col mx-3 my-5'>
+    <div class='row'>
+        <div class="col border-right">
+            <h3 class="display-4 text-center"> {{ 'workObjects.table.title' | translate:locale.language }} </h3>
+            <table mat-table [dataSource]="workObjects" class="mat-elevation-z8">
+
+                <!-- Position Column -->
+                <ng-container matColumnDef="id">
+                    <th mat-header-cell *matHeaderCellDef> ID </th>
+                    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+                </ng-container>
+
+                <!-- Name Column -->
+                <ng-container matColumnDef="name">
+                    <th mat-header-cell *matHeaderCellDef> {{ 'workObjects.table.name' | translate:locale.language }} </th>
+                    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                </ng-container>
+
+                <!-- Weight Column -->
+                <ng-container matColumnDef="address">
+                    <th mat-header-cell *matHeaderCellDef> {{ 'workObjects.table.address' | translate:locale.language }} </th>
+                    <td mat-cell *matCellDef="let element"> {{element.address}} </td>
+                </ng-container>
+
+                <!-- Symbol Column -->
+                <ng-container matColumnDef="link">
+                    <th mat-header-cell *matHeaderCellDef> {{ 'workObjects.table.link' | translate:locale.language }} </th>
+                    <td mat-cell *matCellDef="let element"> 
+                        <button mat-stroked-button color="primary" routerLink="/workplaces/{{element.id}}">{{ 'workObjects.table.view' | translate:locale.language }}</button>
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+        </div>
+        <div class="col border-left">
+            <h3 class="display-4 text-center"> {{ 'workObjects.create.title' | translate:locale.language }} </h3>
+            <form [formGroup]="workObjectForm" (ngSubmit)="onSubmit()" class="user-profile-container">
+
+                <mat-form-field class="form-group mx-auto">
+                    <input matInput formControlName="name" placeholder="{{ 'workObjects.create.name.placeholder' | translate:locale.language }}">
+                    <mat-error *ngIf="workObjectForm.controls.name.errors && (workObjectForm.controls.name.dirty || workObjectForm.controls.name.touched)">
+                        <mat-error *ngIf="workObjectForm.controls.name.errors.required">
+                        *{{ 'workObjects.create.name.required' | translate:locale.language }}
+                        </mat-error>
+                        <mat-error *ngIf="workObjectForm.controls.name.errors.maxlength">
+                        *{{ 'workObjects.create.name.max_length' | translate:locale.language }}
+                        </mat-error>
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="form-group mx-auto">
+                    <input matInput formControlName="address" placeholder="{{ 'workObjects.create.address.placeholder' | translate:locale.language }}">
+                    <mat-error *ngIf="workObjectForm.controls.address.errors && (workObjectForm.controls.address.dirty || workObjectForm.controls.address.touched)">
+                        <mat-error *ngIf="workObjectForm.controls.address.errors.required">
+                        *{{ 'workObjects.create.address.required' | translate:locale.language }}
+                        </mat-error>
+                        <mat-error *ngIf="workObjectForm.controls.address.errors.maxlength">
+                        *{{ 'workObjects.create.address.max_length' | translate:locale.language }}
+                        </mat-error>
+                    </mat-error>
+                </mat-form-field>
+
+                <div class='mx-auto'>
+                    <button mat-raised-button color="accent" [disabled]="workObjectForm.invalid" class="mx-auto">{{ 'workObjects.create.create' | translate:locale.language }}</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

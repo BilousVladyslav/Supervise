@@ -38,7 +38,7 @@ class AreasViewSet(GenericViewSet,
     authentication_classes = [BasicAuthentication, SessionAuthentication, TokenAuthentication]
     serializer_class = serializers.AreaSerializer
     filter_backends = [SearchFilter]
-    search_fields = ['location']
+    search_fields = ['location__name']
 
     def get_queryset(self):
         return Area.objects.filter(location__supervisor=self.request.user)\

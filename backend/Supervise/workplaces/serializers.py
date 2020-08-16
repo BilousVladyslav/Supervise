@@ -18,6 +18,7 @@ class WorkObjectSerializer(serializers.ModelSerializer):
 
 
 class AreaSerializer(serializers.ModelSerializer):
+    location = WorkObjectSerializer()
 
     class Meta:
         model = Area

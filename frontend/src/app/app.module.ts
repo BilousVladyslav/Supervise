@@ -24,6 +24,7 @@ import { LoginComponent } from './shared/components/login/login.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { WorkPlacesComponent } from './components/work-places/work-places.component';
 
 
 
@@ -36,6 +37,7 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
     RegistrationComponent,
     HomePageComponent,
     UserProfileComponent,
+    WorkPlacesComponent,
   ],
   imports: [
     L10nTranslationModule.forRoot(l10nConfig),

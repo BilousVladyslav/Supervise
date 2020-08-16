@@ -1,0 +1,12 @@
+.user-profile-container {
+    display: flex;
+    flex-direction: column;
+}
+.user-profile-container > * {
+    margin-top: 5px;
+    width: 100%;
+}
+
+table {
+    width: 100%;
+  }

@@ -1,3 +1,5 @@
 from django.contrib import admin
+from .models import WorkObject, Area
 
-# Register your models here.
+admin.site.register(WorkObject)
+admin.site.register(Area)

@@ -18,13 +18,13 @@ export class ProfileService {
 
 
   GetUserProfile(): Observable<UserProfileModel> {
-        return this.http
-          .get<UserProfileModel>(this.controllerUrl);
+    return this.http
+      .get<UserProfileModel>(this.controllerUrl);
   }
 
   EditUserProfile(profile: UserProfileModel): Observable<UserProfileModel> {
-        return this.http
-          .put<UserProfileModel>(this.controllerUrl, profile);
+    return this.http
+      .put<UserProfileModel>(this.controllerUrl, profile);
   }
 
   ChangePassword(passwords: ChangePassword): Observable<any> {

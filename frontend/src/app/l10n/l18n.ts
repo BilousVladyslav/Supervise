@@ -95,6 +95,29 @@ export const i18nAsset = {
           regex: 'Last name must consists of uppercase and lowercase Latin letters'
         },
         save: 'Save changes'
+      },
+      workObjects: {
+        table: {
+          title: 'All your work objects',
+          name: 'Name',
+          address: 'Address',
+          link: 'Link',
+          view: 'View'
+        },
+        create: {
+          title: 'Create new work object',
+          name: {
+            placeholder: 'Work objects name',
+            required: 'Object name is a required',
+            max_length: 'Object name requires maximum 150 symbols',
+          },
+          address: {
+            placeholder: 'Work objects address',
+            required: 'Address is a required',
+            max_length: 'Address requires maximum 250 symbols',
+          },
+          create: 'Create object'
+        }
       }
     },
     'uk-UA': {
@@ -193,6 +216,29 @@ export const i18nAsset = {
           regex: 'Прізвище має складати великі та малі латинські букви'
         },
         save: 'Зберегти зміни'
+      },
+      workObjects: {
+        table: {
+          title: 'Всі робочі об\'єкти',
+          name: 'Назва',
+          address: 'Адреса',
+          link: 'Посилання',
+          view: 'Переглянути'
+        },
+        create: {
+          title: 'створити новий робочий об\'єкт',
+          name: {
+            placeholder: 'Назва робочого об\'єкта',
+            required: 'Назва робочого об\'єкта обов\'язкова',
+            max_length: 'Назва робочого об\'єкта може складати максимум 150 букв',
+          },
+          address: {
+            placeholder: 'Адреса робочого об\'єкта',
+            required: 'Адреса обов\'язкова',
+            max_length: 'Адреса може складати максимум 250 букв',
+          },
+          create: 'Створити об\'єкт'
+        }
       }
     }
   };
