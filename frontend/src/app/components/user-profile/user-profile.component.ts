@@ -15,7 +15,7 @@ import {MatSnackBar} from '@angular/material/snack-bar';
   styleUrls: ['./user-profile.component.css']
 })
 export class UserProfileComponent implements OnInit, OnDestroy {
-  subscription: Subscription;
+  subscription: Subscription = new Subscription();
   user: UserProfileModel = new UserProfileModel();
   userProfileForm: FormGroup;
 
@@ -27,11 +27,11 @@ export class UserProfileComponent implements OnInit, OnDestroy {
     private _snackBar: MatSnackBar,
     @Inject(L10N_LOCALE) public locale: L10nLocale
   ) {
-    authorizationService.isLoggedIn.subscribe(logged => {
+    this.subscription.add(authorizationService.isLoggedIn.subscribe(logged => {
       if (!logged){
         this.router.navigate(['']);
       }
-    });
+    }));
   }
 
   ngOnInit(): void {
@@ -49,14 +49,15 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   }
 
   GetUserProfile(): void {
-    this.subscription = this.profileService.GetUserProfile()
+    this.subscription.add(this.profileService.GetUserProfile()
       .subscribe(data => {
         this.user = data;
-      });
+      })
+    );
   }
 
   EditUserProfile(): void {
-    this.subscription = this.profileService.EditUserProfile(this.user)
+    this.subscription.add(this.profileService.EditUserProfile(this.user)
       .subscribe(data => {
         this.user = data;
         this._snackBar.open('Success!', 'Close', {
@@ -67,7 +68,8 @@ export class UserProfileComponent implements OnInit, OnDestroy {
         this._snackBar.open('Wrong data,', 'Close', {
           duration: 3000,
         });
-      });
+      })
+    );
   }
 
   onSubmitProfile(): void {
@@ -76,8 +78,6 @@ export class UserProfileComponent implements OnInit, OnDestroy {
 
 
   ngOnDestroy(): void {
-    if (this.subscription){
-      this.subscription.unsubscribe();
-    }
+    this.subscription.unsubscribe();
   }
 }

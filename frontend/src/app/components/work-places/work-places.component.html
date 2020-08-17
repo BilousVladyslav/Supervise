@@ -4,7 +4,7 @@
             <h3 class="display-4 text-center"> {{ 'workObjects.table.title' | translate:locale.language }} </h3>
             <table mat-table [dataSource]="workObjects" class="mat-elevation-z8">
 
-                <!-- Position Column -->
+                <!-- ID Column -->
                 <ng-container matColumnDef="id">
                     <th mat-header-cell *matHeaderCellDef> ID </th>
                     <td mat-cell *matCellDef="let element"> {{element.id}} </td>
@@ -16,17 +16,17 @@
                     <td mat-cell *matCellDef="let element"> {{element.name}} </td>
                 </ng-container>
 
-                <!-- Weight Column -->
+                <!-- Address Column -->
                 <ng-container matColumnDef="address">
                     <th mat-header-cell *matHeaderCellDef> {{ 'workObjects.table.address' | translate:locale.language }} </th>
                     <td mat-cell *matCellDef="let element"> {{element.address}} </td>
                 </ng-container>
 
-                <!-- Symbol Column -->
+                <!-- Link Column -->
                 <ng-container matColumnDef="link">
                     <th mat-header-cell *matHeaderCellDef> {{ 'workObjects.table.link' | translate:locale.language }} </th>
                     <td mat-cell *matCellDef="let element"> 
-                        <button mat-stroked-button color="primary" routerLink="/workplaces/{{element.id}}">{{ 'workObjects.table.view' | translate:locale.language }}</button>
+                        <button mat-stroked-button color="primary" routerLink="/workobjects/{{element.id}}">{{ 'workObjects.table.view' | translate:locale.language }}</button>
                     </td>
                 </ng-container>
 

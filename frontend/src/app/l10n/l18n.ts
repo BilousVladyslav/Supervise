@@ -131,6 +131,47 @@ export const i18nAsset = {
           workers_now: 'Workers here now'
         },
         create_areas: 'You have no areas, create them in order to see in the table'
+      },
+      objectEdit: {
+        workObject: {
+          title: 'Edit work object',
+          name: {
+            placeholder: 'Work object\`s name',
+            required: 'Object\`s name is a required',
+            max_length: 'Object\`s name requires maximum 150 symbols'
+          },
+          address: {
+            placeholder: 'Work object\`s address',
+            required: 'Address is a required',
+            max_length: 'Address requires maximum 250 symbols',
+          },
+          save: 'Save changes',
+          delete: 'Delete object'
+        },
+        areas: {
+          title: 'Areas',
+          id: 'Area ID',
+          area_title: {
+            placeholder: 'Area title',
+            required: 'Area\`s title is a required',
+            max_length: 'Area\`s title requires maximum 150 symbols',
+          },
+          description: {
+            placeholder: 'Area description',
+            required: 'Area\`s description is a required'
+          },
+          workers_count: {
+            placeholder: 'Area workers count',
+            required: 'Area\`s workers count is a required',
+            regex: 'Area\`s workers count must contain digits only'
+          },
+          delete: 'Delete area',
+          save: 'Save changes'
+        },
+        newArea: {
+          title: 'Create new area',
+          create: 'Create area'
+        }
       }
     },
     'uk-UA': {
@@ -258,13 +299,54 @@ export const i18nAsset = {
         title: 'Всі Ваші ділянки',
         table: {
           object_name: 'Назва об\'єкта',
-          objects_address: 'Адреса об\'єкта',
+          object_address: 'Адреса об\'єкта',
           area_title: 'Назва ділянки',
           area_description: 'Опис ділянки',
           workers_must_be: 'Робітників має бути',
           workers_now: 'Робітників працює тут зараз'
         },
         create_areas: 'У Вас немає ділянок, створіть їх для того, щоб побачити у таблиці'
+      },
+      objectEdit: {
+        workObject: {
+          title: 'Редагувати робочий об\'єкт',
+          name: {
+            placeholder: 'Назва робочого об\'єкта',
+            required: 'Назва обов\'язкова',
+            max_length: 'Назва може складати максимум 150 букв'
+          },
+          address: {
+            placeholder: 'Адреса робочого об\'єкта',
+            required: 'Адреса обов\'язкова',
+            max_length: 'Адреса може складати максимум 250 букв',
+          },
+          save: 'Зберегти зміни',
+          delete: 'Видалити об\'єкт'
+        },
+        areas: {
+          title: 'Ділянки',
+          id: 'ID ділянки',
+          area_title: {
+            placeholder: 'Назва ділянки',
+            required: 'Назва обов\'язкова',
+            max_length: 'Назва може складати максимум 150 букв',
+          },
+          description: {
+            placeholder: 'Опис ділянки',
+            required: 'Опис ділянки обов\'язковий'
+          },
+          workers_count: {
+            placeholder: 'Кількість робітників на ділянці',
+            required: 'Кількість робітників обов\'язкова',
+            regex: 'Кількість робітників має складати тільки цифри'
+          },
+          delete: 'Видалити ділянку',
+          save: 'Зберегти зміни'
+        },
+        newArea: {
+          title: 'Створити нову ділянку',
+          create: 'Створити ділянку'
+        }
       }
     }
   };

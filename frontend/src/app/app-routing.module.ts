@@ -4,6 +4,7 @@ import { HomePageComponent } from './components/home-page/home-page.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { WorkPlacesComponent } from './components/work-places/work-places.component';
+import { EditWorkObjectComponent } from './components/edit-work-object/edit-work-object.component';
 import { AllAreasComponent } from './components/all-areas/all-areas.component';
 
 
@@ -23,6 +24,10 @@ const routes: Routes = [
   {
     path: 'workobjects',
     component: WorkPlacesComponent
+  },
+  {
+    path: 'workobjects/:objectId',
+    component: EditWorkObjectComponent
   },
   {
     path: 'areas',

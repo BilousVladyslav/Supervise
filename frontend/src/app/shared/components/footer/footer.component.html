@@ -1,5 +1,6 @@
 <mat-toolbar class='justify-content-md-center bg-dark'>
     <span style='font-size: 16px' class="text-muted mx-2">Supervise</span>
-    <span style='font-size: 16px'><a routerLink="/profile" class="text-muted mx-2">{{ 'navbar.profile' | translate:locale.language }}</a></span>
-    <span style='font-size: 16px'><a routerLink="/workplaces" class="text-muted mx-2">{{ 'navbar.workplaces' | translate:locale.language }}</a></span>
+    <span style='font-size: 16px' *ngIf="isLogged"><a routerLink="/profile" class="text-muted mx-2">{{ 'navbar.profile' | translate:locale.language }}</a></span>
+    <span style='font-size: 16px' *ngIf="isLogged"><a routerLink="/workplaces" class="text-muted mx-2">{{ 'navbar.workplaces' | translate:locale.language }}</a></span>
+    <span style='font-size: 16px' *ngIf="isLogged"><a routerLink="/areas" class="text-muted mx-2">{{ 'navbar.places' | translate:locale.language }}</a></span>
 </mat-toolbar>

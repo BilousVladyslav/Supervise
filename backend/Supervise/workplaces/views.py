@@ -36,13 +36,23 @@ class AreasViewSet(GenericViewSet,
                    mixins.DestroyModelMixin):
     permission_classes = [IsAuthenticated]
     authentication_classes = [BasicAuthentication, SessionAuthentication, TokenAuthentication]
-    serializer_class = serializers.AreaSerializer
     filter_backends = [SearchFilter]
-    search_fields = ['location__name']
+    search_fields = ['location__id']
 
     def get_queryset(self):
         return Area.objects.filter(location__supervisor=self.request.user)\
             .order_by(F('working_now') - F('workers_count'))
+
+    def get_serializer_class(self):
+        if self.action == 'update' or self.action == 'partial_update':
+            return serializers.EditAreaSerializer
+        if self.action == 'create':
+            return serializers.CreateAreaSerializer
+        else:
+            return serializers.AreaSerializer
+
+    def get_serializer_context(self):
+        return {'user': self.request.user}
 
 
 class AreasForDroneViewSet(GenericViewSet,

@@ -1,0 +1,135 @@
+<div class='col mx-3 my-5'>
+    <div *ngIf="workObjectForm">
+        <h3 class="display-4 text-center mb-5"> {{ 'objectEdit.workObject.title' | translate:locale.language }} </h3>
+        <form [formGroup]="workObjectForm" (ngSubmit)="saveWorkObject()" class="d-flex flex-column">
+
+            <mat-form-field class="form-group mx-auto w-75">
+                <input matInput formControlName="name" placeholder="{{ 'objectEdit.workObject.name.placeholder' | translate:locale.language }}">
+                <mat-error *ngIf="workObjectForm.controls.name.errors && (workObjectForm.controls.name.dirty || workObjectForm.controls.name.touched)">
+                    <mat-error *ngIf="workObjectForm.controls.name.errors.required">
+                    *{{ 'objectEdit.workObject.name.required' | translate:locale.language }}
+                    </mat-error>
+                    <mat-error *ngIf="workObjectForm.controls.name.errors.maxlength">
+                    *{{ 'objectEdit.workObject.name.max_length' | translate:locale.language }}
+                    </mat-error>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="form-group mx-auto w-75">
+                <input matInput formControlName="address" placeholder="{{ 'objectEdit.workObject.address.placeholder' | translate:locale.language }}">
+                <mat-error *ngIf="workObjectForm.controls.address.errors && (workObjectForm.controls.address.dirty || workObjectForm.controls.address.touched)">
+                    <mat-error *ngIf="workObjectForm.controls.address.errors.required">
+                    *{{ 'objectEdit.workObject.address.required' | translate:locale.language }}
+                    </mat-error>
+                    <mat-error *ngIf="workObjectForm.controls.address.errors.maxlength">
+                    *{{ 'objectEdit.workObject.address.max_length' | translate:locale.language }}
+                    </mat-error>
+                </mat-error>
+            </mat-form-field>
+
+            <div class='mx-auto d-flex w-75 justify-content-around'>
+                <button mat-raised-button color="primary" [disabled]="workObjectForm.invalid" (click)="saveWorkObject()">{{ 'objectEdit.workObject.save' | translate:locale.language }}</button>
+                <button mat-raised-button color="warn" (click)="deleteWorkObject()">{{ 'objectEdit.workObject.delete' | translate:locale.language }}</button>
+            </div>
+        </form>
+    </div>
+    <mat-divider class='my-4'></mat-divider>
+    <div *ngIf="areasFormGroup && areasFormArray.length !== 0" [formGroup]='areasFormGroup'>
+        <h3 class="text-center mb-3"> {{ 'objectEdit.areas.title' | translate:locale.language }} </h3>
+
+        <div formArrayName="areas" *ngFor="let area of areasFormGroup.get('areas').controls; let i = index;">
+            <mat-card class="mx-auto my-4 w-75" [formGroupName]="i">
+                <mat-card-content class="d-flex flex-column">
+                    <mat-form-field class="form-group w-75">
+                        <input matInput formControlName="id" [readonly]="true" placeholder="{{ 'objectEdit.areas.id' | translate:locale.language }}">
+                    </mat-form-field>
+
+                    <mat-form-field class="form-group w-75">
+                        <input matInput formControlName="title" placeholder="{{ 'objectEdit.areas.area_title.placeholder' | translate:locale.language }}">
+                        <mat-error *ngIf="area.controls.title.errors && (area.controls.title.dirty || area.controls.title.touched)">
+                            <mat-error *ngIf="area.controls.title.errors.required">
+                            *{{ 'objectEdit.areas.area_title.required' | translate:locale.language }}
+                            </mat-error>
+                            <mat-error *ngIf="area.controls.title.errors.maxlength">
+                            *{{ 'objectEdit.areas.area_title.max_length' | translate:locale.language }}
+                            </mat-error>
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="form-group w-75">
+                        <input matInput formControlName="description" placeholder="{{ 'objectEdit.areas.description.placeholder' | translate:locale.language }}">
+                        <mat-error *ngIf="area.controls.description.errors && (area.controls.description.dirty || area.controls.description.touched)">
+                            <mat-error *ngIf="area.controls.description.errors.required">
+                            *{{ 'objectEdit.areas.description.required' | translate:locale.language }}
+                            </mat-error>
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="form-group w-75">
+                        <input matInput formControlName="workers_count" placeholder="{{ 'objectEdit.areas.workers_count.placeholder' | translate:locale.language }}">
+                        <mat-error *ngIf="area.controls.workers_count.errors && (area.controls.workers_count.dirty || area.controls.workers_count.touched)">
+                            <mat-error *ngIf="area.controls.workers_count.errors.required">
+                            *{{ 'objectEdit.areas.workers_count.required' | translate:locale.language }}
+                            </mat-error>
+                            <mat-error *ngIf="area.controls.workers_count.errors.pattern">
+                            *{{ 'objectEdit.areas.workers_count.regex' | translate:locale.language }}
+                            </mat-error>
+                        </mat-error>
+                    </mat-form-field>
+                </mat-card-content>
+                <mat-card-actions>
+                    <button mat-raised-button color="warn" (click)="deleteArea(i)"> {{ 'objectEdit.areas.delete' | translate:locale.language }}</button>
+                    <button mat-raised-button color="primary" [disabled]="areasFormGroup.get('areas').at(i).invalid" (click)="saveArea(i)"> 
+                        {{ 'objectEdit.areas.save' | translate:locale.language }}
+                    </button>
+                </mat-card-actions>
+            </mat-card>
+        
+        </div>
+        <mat-divider class='my-4'></mat-divider>
+    <div *ngIf="newAreaFormGroup">
+        <h3 class="text-center mb-3"> {{ 'objectEdit.newArea.title' | translate:locale.language }} </h3>
+
+        <form [formGroup]="newAreaFormGroup" (ngSubmit)="createNewArea()" class="d-flex flex-column">
+
+            <mat-form-field class="form-group mx-auto w-75">
+                <input matInput formControlName="title" placeholder="{{ 'objectEdit.areas.area_title.placeholder' | translate:locale.language }}">
+                <mat-error *ngIf="newAreaFormGroup.controls.title.errors && (newAreaFormGroup.controls.title.dirty || newAreaFormGroup.controls.title.touched)">
+                    <mat-error *ngIf="newAreaFormGroup.controls.title.errors.required">
+                    *{{ 'objectEdit.areas.area_title.required' | translate:locale.language }}
+                    </mat-error>
+                    <mat-error *ngIf="newAreaFormGroup.controls.title.errors.maxlength">
+                    *{{ 'objectEdit.areas.area_title.max_length' | translate:locale.language }}
+                    </mat-error>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="form-group mx-auto w-75">
+                <input matInput formControlName="description" placeholder="{{ 'objectEdit.areas.description.placeholder' | translate:locale.language }}">
+                <mat-error *ngIf="newAreaFormGroup.controls.description.errors && (newAreaFormGroup.controls.description.dirty || newAreaFormGroup.controls.description.touched)">
+                    <mat-error *ngIf="newAreaFormGroup.controls.description.errors.required">
+                    *{{ 'objectEdit.areas.description.required' | translate:locale.language }}
+                    </mat-error>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="form-group mx-auto w-75">
+                <input matInput formControlName="workers_count" placeholder="{{ 'objectEdit.areas.workers_count.placeholder' | translate:locale.language }}">
+                <mat-error *ngIf="newAreaFormGroup.controls.workers_count.errors && (newAreaFormGroup.controls.workers_count.dirty || newAreaFormGroup.controls.workers_count.touched)">
+                    <mat-error *ngIf="newAreaFormGroup.controls.workers_count.errors.required">
+                    *{{ 'objectEdit.areas.workers_count.required' | translate:locale.language }}
+                    </mat-error>
+                    <mat-error *ngIf="newAreaFormGroup.controls.workers_count.errors.pattern">
+                    *{{ 'objectEdit.areas.workers_count.regex' | translate:locale.language }}
+                    </mat-error>
+                </mat-error>
+            </mat-form-field>
+
+            <div class='mx-auto d-flex w-75 justify-content-around'>
+                <button mat-raised-button color="primary" [disabled]="newAreaFormGroup.invalid">
+                    {{ 'objectEdit.newArea.create' | translate:locale.language }}
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -53,14 +53,15 @@ export class LoginComponent implements OnInit {
   }
 
   login(loginViewModel: UserLogin): void {
-    this.subscription = this.authenticationService
+    this.subscription.add(this.authenticationService
       .login(loginViewModel)
       .subscribe(
         res => {
           document.getElementById('closeModal').click();
           this.router.navigate(['']);
         },
-        errors => this.errorMessage = errors.message);
+        errors => this.errorMessage = errors.message)
+    );
   }
 
   formIsValid(): boolean {
@@ -68,9 +69,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnDestroy(): void {
-    if (this.subscription){
-      this.subscription.unsubscribe();
-    }
+    this.subscription.unsubscribe();
   }
 
 }

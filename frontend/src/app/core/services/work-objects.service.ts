@@ -24,12 +24,12 @@ export class WorkObjectsService {
 
   GetConcreteWorkObject(id: string): Observable<WorkObjectModel> {
     return this.http
-      .get<WorkObjectModel>(this.controllerUrl + id);
+      .get<WorkObjectModel>(this.controllerUrl + id + '/');
   }
 
   EditWorkObject(workObject: CreateWorkObjectModel, id: string): Observable<WorkObjectModel> {
     return this.http
-      .put<WorkObjectModel>(this.controllerUrl + id, workObject);
+      .put<WorkObjectModel>(this.controllerUrl + id + '/', workObject);
   }
 
   CreateWorkObject(workObject: CreateWorkObjectModel): Observable<WorkObjectModel> {
@@ -39,6 +39,6 @@ export class WorkObjectsService {
 
   DeleteWorkObject(id: string): Observable<any> {
     return this.http
-      .delete<any>(this.controllerUrl + id);
+      .delete<any>(this.controllerUrl + id + '/');
   }
 }

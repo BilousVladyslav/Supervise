@@ -21,7 +21,7 @@ import { UserLogin } from 'src/app/shared/models/user-login.model';
 })
 export class RegistrationComponent implements OnInit, OnDestroy {
   registerForm: FormGroup;
-  private subscription: Subscription;
+  private subscription: Subscription = new Subscription();
   errorMessage: string = null;
   isLogged = false;
 
@@ -69,7 +69,7 @@ export class RegistrationComponent implements OnInit, OnDestroy {
   }
 
   register_user(registerViewModel: RegistrationModel): void {
-    this.subscription = this.registerService.register(registerViewModel).subscribe(
+    this.subscription.add(this.registerService.register(registerViewModel).subscribe(
       res => {
         const loginModel = {
           username: registerViewModel.username,
@@ -79,16 +79,15 @@ export class RegistrationComponent implements OnInit, OnDestroy {
       },
       errors => {
         this.errorMessage = errors.message;
-      });
+      })
+    );
   }
 
   login(loginModel: UserLogin): void {
-    this.authorizationService.login(loginModel).subscribe(x => this.router.navigate(['/']));
+    this.subscription.add(this.authorizationService.login(loginModel).subscribe(x => this.router.navigate(['/'])));
   }
 
   ngOnDestroy(): void {
-    if (this.subscription){
-      this.subscription.unsubscribe();
-    }
+    this.subscription.unsubscribe();
   }
 }

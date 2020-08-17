@@ -15,7 +15,7 @@ import { MatTable } from '@angular/material/table';
   styleUrls: ['./work-places.component.css']
 })
 export class WorkPlacesComponent implements OnInit, OnDestroy {
-  subscription: Subscription;
+  subscription: Subscription = new Subscription();
   workObjects: WorkObjectModel[] = [];
   displayedColumns: string[] = ['id', 'name', 'address', 'link'];
   workObjectForm: FormGroup;
@@ -29,11 +29,11 @@ export class WorkPlacesComponent implements OnInit, OnDestroy {
     private router: Router,
     @Inject(L10N_LOCALE) public locale: L10nLocale
   ) {
-    authorizationService.isLoggedIn.subscribe(logged => {
+    this.subscription.add(authorizationService.isLoggedIn.subscribe(logged => {
       if (!logged){
         this.router.navigate(['']);
       }
-    });
+    }));
    }
 
   ngOnInit(): void {
@@ -42,10 +42,11 @@ export class WorkPlacesComponent implements OnInit, OnDestroy {
   }
 
   GetWorkObjects(): void {
-    this.subscription = this.workObjectsService.GetWorkObjects()
+    this.subscription.add(this.workObjectsService.GetWorkObjects()
       .subscribe(data => {
         this.workObjects = data;
-      });
+      })
+    );
   }
 
   createWorkObjectForm(): void {
@@ -59,19 +60,17 @@ export class WorkPlacesComponent implements OnInit, OnDestroy {
 
   onSubmit(): void {
     const workObjectViewModel = this.workObjectForm.value as CreateWorkObjectModel;
-    this.workObjectsService.CreateWorkObject(workObjectViewModel).subscribe(
+    this.subscription.add(this.workObjectsService.CreateWorkObject(workObjectViewModel).subscribe(
       res => {
         this.workObjects.push(res);
         this.table.renderRows();
         this.workObjectForm.reset();
       }
-    );
+    ));
   }
 
   ngOnDestroy(): void {
-    if (this.subscription){
-      this.subscription.unsubscribe();
-    }
+    this.subscription.unsubscribe();
   }
 
 }

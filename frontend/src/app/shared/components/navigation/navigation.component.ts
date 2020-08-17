@@ -17,7 +17,7 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./navigation.component.css']
 })
 export class NavigationComponent implements OnInit {
-  private subscription: Subscription;
+  private subscription: Subscription = new Subscription();
   schema = this.l10nConfig.schema;
 
   selectedLanguage = this.schema[0].locale;
@@ -30,17 +30,17 @@ export class NavigationComponent implements OnInit {
     private router: Router,
     private autorizationService: AuthorizationService,
   ) {
-    autorizationService.isLoggedIn.subscribe(x => this.isLogged = x);
+    this.subscription.add(autorizationService.isLoggedIn.subscribe(x => this.isLogged = x));
    }
 
    ngOnInit(): void {
-    this.translation.onError().subscribe({
+    this.subscription.add(this.translation.onError().subscribe({
       next: (error: any) => {
         if (error){
           console.log(error);
         }
       }
-    });
+    }));
   }
 
   setLocale(locale: L10nLocale): void {

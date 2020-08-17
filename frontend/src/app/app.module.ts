@@ -26,6 +26,7 @@ import { HomePageComponent } from './components/home-page/home-page.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { WorkPlacesComponent } from './components/work-places/work-places.component';
 import { AllAreasComponent } from './components/all-areas/all-areas.component';
+import { EditWorkObjectComponent } from './components/edit-work-object/edit-work-object.component';
 
 
 
@@ -40,6 +41,7 @@ import { AllAreasComponent } from './components/all-areas/all-areas.component';
     UserProfileComponent,
     WorkPlacesComponent,
     AllAreasComponent,
+    EditWorkObjectComponent,
   ],
   imports: [
     L10nTranslationModule.forRoot(l10nConfig),

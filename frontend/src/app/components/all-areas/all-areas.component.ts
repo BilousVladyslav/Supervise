@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, OnDestroy } from '@angular/core';
 import { AreasService } from 'src/app/core/services/areas.service';
 import { AreaModel } from '../../shared/models/area.model';
 import { Subscription } from 'rxjs';
@@ -11,8 +11,8 @@ import { L10nLocale, L10N_LOCALE } from 'angular-l10n';
   templateUrl: './all-areas.component.html',
   styleUrls: ['./all-areas.component.css']
 })
-export class AllAreasComponent implements OnInit {
-  subscription: Subscription;
+export class AllAreasComponent implements OnInit, OnDestroy {
+  subscription: Subscription = new Subscription();
   areas: AreaModel[] = [];
   displayedColumns: string[] = ['area_id', 'location_name', 'location_address', 'area_title', 'area_description', 'workers_must_be', 'working_now'];
 
@@ -22,11 +22,11 @@ export class AllAreasComponent implements OnInit {
     private router: Router,
     @Inject(L10N_LOCALE) public locale: L10nLocale
   ) {
-    authorizationService.isLoggedIn.subscribe(logged => {
+    this.subscription.add(authorizationService.isLoggedIn.subscribe(logged => {
       if (!logged){
         this.router.navigate(['']);
       }
-    });
+    }));
    }
 
   ngOnInit(): void {
@@ -34,11 +34,11 @@ export class AllAreasComponent implements OnInit {
   }
 
   getAreas(): void {
-    this.areasService.GetAllAreas().subscribe(
+    this.subscription.add(this.areasService.GetAllAreas().subscribe(
       res => {
         this.areas = res;
       }
-    );
+    ));
   }
 
   getColor(workersNow: number, workersMustBe: number): string{
@@ -51,4 +51,7 @@ export class AllAreasComponent implements OnInit {
     return 'green';
   }
 
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
 }

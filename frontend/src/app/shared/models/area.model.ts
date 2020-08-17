@@ -9,6 +9,12 @@ export class AreaModel {
     working_now: number;
 }
 
+export class EditAreaModel {
+    title: string;
+    description: string;
+    workers_count: number;
+}
+
 export class CreateAreaModel {
     title: string;
     description: string;

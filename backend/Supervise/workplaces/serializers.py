@@ -1,4 +1,5 @@
 from rest_framework import serializers
+from rest_framework.generics import get_object_or_404
 
 from django.contrib.auth import get_user_model
 
@@ -24,6 +25,27 @@ class AreaSerializer(serializers.ModelSerializer):
         model = Area
         fields = '__all__'
         read_only_fields = ['working_now']
+
+
+class SlugRelatedLocationField(serializers.SlugRelatedField):
+
+    def get_queryset(self):
+        return WorkObject.objects.filter(supervisor=self.context['user'])
+
+
+class CreateAreaSerializer(serializers.ModelSerializer):
+    location = SlugRelatedLocationField('id')
+
+    class Meta:
+        model = Area
+        fields = ['title', 'description', 'workers_count', 'location']
+
+
+class EditAreaSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Area
+        fields = ['title', 'description', 'workers_count']
 
 
 class AreaSerializerForDrone(serializers.ModelSerializer):

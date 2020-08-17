@@ -9,4 +9,8 @@
 
 table {
     width: 100%;
-  }
+}
+
+.mat-column-id{
+    max-width: 64px;
+}

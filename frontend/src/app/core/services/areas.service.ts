@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {environment} from '../../../environments/environment';
 import {HttpClient, HttpParams} from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { AreaModel, CreateAreaModel } from '../../shared/models/area.model';
+import { AreaModel, CreateAreaModel, EditAreaModel } from '../../shared/models/area.model';
 
 
 @Injectable({
@@ -30,21 +30,21 @@ export class AreasService {
 
   GetConcreteArea(id: string): Observable<AreaModel> {
     return this.http
-      .get<AreaModel>(this.controllerUrl + id);
+      .get<AreaModel>(this.controllerUrl + id + '/');
   }
 
-  EditArea(area: CreateAreaModel, id: string): Observable<AreaModel> {
+  EditArea(area: EditAreaModel, id: string): Observable<AreaModel> {
     return this.http
-      .put<AreaModel>(this.controllerUrl + id, area);
+      .put<AreaModel>(this.controllerUrl + id + '/', area);
   }
 
-  CreatArea(area: CreateAreaModel): Observable<AreaModel> {
+  CreateArea(area: CreateAreaModel): Observable<AreaModel> {
     return this.http
       .post<AreaModel>(this.controllerUrl, area);
   }
 
   DeleteArea(id: string): Observable<any> {
     return this.http
-      .delete<any>(this.controllerUrl + id);
+      .delete<any>(this.controllerUrl + id + '/');
   }
 }
