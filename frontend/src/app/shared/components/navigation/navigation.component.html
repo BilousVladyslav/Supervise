@@ -14,6 +14,9 @@
       <li class="nav-item active">
         <a routerLink="/workobjects" class="nav-link mx-2">{{ 'navbar.workplaces' | translate:locale.language }}</a>
       </li>
+      <li class="nav-item active">
+        <a routerLink="/areas" class="nav-link mx-2">{{ 'navbar.places' | translate:locale.language }}</a>
+      </li>
     </ul>
 
     <button *ngIf="isLogged" mat-raised-button (click)="logOut()" class="mx-2">{{ 'navbar.logout' | translate:locale.language }}</button>

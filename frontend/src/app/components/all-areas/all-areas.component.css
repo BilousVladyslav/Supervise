@@ -1,0 +1,10 @@
+table {
+    width: 100%;
+}
+
+/* Column Widths */
+.mat-column-id,
+.mat-column-workers_must_be,
+.mat-column-working_now {
+  max-width: 64px;
+}

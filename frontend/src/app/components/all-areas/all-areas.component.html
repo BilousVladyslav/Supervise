@@ -1,0 +1,53 @@
+<div class='col'>
+    <h3 class="display-4 text-center my-5"> {{ 'areas.title' | translate:locale.language }} </h3>
+    <table mat-table [dataSource]="areas" class="mat-elevation-z8">
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="area_id">
+            <th mat-header-cell *matHeaderCellDef> ID </th>
+            <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="location_name">
+            <th mat-header-cell *matHeaderCellDef> {{ 'areas.table.object_name' | translate:locale.language }} </th>
+            <td mat-cell *matCellDef="let element"> {{element.location.name}} </td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="location_address">
+            <th mat-header-cell *matHeaderCellDef> {{ 'areas.table.object_address' | translate:locale.language }} </th>
+            <td mat-cell *matCellDef="let element"> {{element.location.address}} </td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="area_title">
+            <th mat-header-cell *matHeaderCellDef> {{ 'areas.table.area_title' | translate:locale.language }} </th>
+            <td mat-cell *matCellDef="let element"> {{element.title}} </td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="area_description">
+            <th mat-header-cell *matHeaderCellDef> {{ 'areas.table.area_description' | translate:locale.language }} </th>
+            <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="workers_must_be">
+            <th mat-header-cell *matHeaderCellDef> {{ 'areas.table.workers_must_be' | translate:locale.language }} </th>
+            <td mat-cell *matCellDef="let element"> {{element.workers_count}} </td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="working_now">
+            <th mat-header-cell *matHeaderCellDef> {{ 'areas.table.workers_now' | translate:locale.language }} </th>
+            <td mat-cell *matCellDef="let element" [style.color]='getColor(element.working_now, element.workers_count)'> 
+                {{element.working_now}}
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <h3 *ngIf='areas.length === 0' class='text-center my-4'> {{ 'areas.create_areas' | translate:locale.language }} </h3>
+</div>

@@ -28,7 +28,8 @@ export const i18nAsset = {
         logout: 'Log out',
         profile: 'Profile',
         home: 'Home',
-        workplaces: 'Workplaces'
+        workplaces: 'Work Objects',
+        places: 'All areas'
       },
       register: {
         title: 'Registration',
@@ -118,6 +119,18 @@ export const i18nAsset = {
           },
           create: 'Create object'
         }
+      },
+      areas: {
+        title: 'All Your areas',
+        table: {
+          object_name: 'Object name',
+          object_address: 'Object address',
+          area_title: 'Area title',
+          area_description: 'Area description',
+          workers_must_be: 'Workers must be here',
+          workers_now: 'Workers here now'
+        },
+        create_areas: 'You have no areas, create them in order to see in the table'
       }
     },
     'uk-UA': {
@@ -190,7 +203,8 @@ export const i18nAsset = {
         logout: 'Вийти',
         profile: 'Профіль',
         home: 'Головна',
-        workplaces: 'Робочі об\'єкти'
+        workplaces: 'Робочі об\'єкти',
+        places: 'Всі ділянки'
       },
       profile: {
         title: 'Профіль користувача',
@@ -239,6 +253,18 @@ export const i18nAsset = {
           },
           create: 'Створити об\'єкт'
         }
+      },
+      areas: {
+        title: 'Всі Ваші ділянки',
+        table: {
+          object_name: 'Назва об\'єкта',
+          objects_address: 'Адреса об\'єкта',
+          area_title: 'Назва ділянки',
+          area_description: 'Опис ділянки',
+          workers_must_be: 'Робітників має бути',
+          workers_now: 'Робітників працює тут зараз'
+        },
+        create_areas: 'У Вас немає ділянок, створіть їх для того, щоб побачити у таблиці'
       }
     }
   };
