@@ -2,8 +2,9 @@ export const i18nAsset = {
     'en-US': {
       changeLocale: 'Change language',
       home: {
-        title: 'Home',
-        about: ''
+        title: 'About system',
+        about_first: 'Every day new buildings, shopping and entertainment centers or special facilities are built in the world. Companies engaged in the construction of such facilities must constantly monitor the proper execution of all work at each stage of construction, because even the slightest mistake can lead to the destruction of the entire building. To monitor the implementation of these steps, companies must hire people who bypass certain theories and check the quality of work. Such people are called contractors. They are primarily responsible for the successful completion of certain work by their subcontractors. Companies pay a lot of time and attention to the problem of hiring responsible and specialized people.',
+        about_second: 'The purpose of the product is to increase revenue and increase the efficiency of on-site inspections. This system makes the old rules more effective and will allow construction company owners to save a lot of money on contractors.'
       },
       login: {
         title: 'Login',
@@ -177,8 +178,9 @@ export const i18nAsset = {
     'uk-UA': {
       changeLocale: 'Змінити мову',
       home: {
-        title: 'Головна',
-        about: ''
+        title: 'Про систему',
+        about_first: 'Кожен день у світі будуються нові будівлі, торговельні та розважальні центри або спеціальні об\'єкти. Компанії, які займаются будівництвом таких об\'єктів, мають постійно слідкувати за правильним виконанням усіх робіт на кожному з етапів будівництва, тому що навіть найменша помилка може призвести до руйнування усієї будівлі. Для слідкування виконнання цих кроків компанії мають наймати таких людей, які обходять певні теориторії та перевіряють якість виконання робіт. Таких людей називають підрядниками. Вони, насамперед, несуть відповідальність за успішне закінчення виконнання певної роботи своїми субпідрядниками. Компанії дуже багато часу та уваги приділяють проблемі найму відповідальних та спеціалізованних людей.',
+        about_second: 'Мета продукту — збільшити доходи та збільшити ефективність у перевірці проведених робіт на об’єктах. Ця система робить ефективнішим старі правила та дозволить власникам будівельних компаній значно зекономити гроші на спеціалістах підрядниках.'
       },
       login: {
         title: 'Авторизація',

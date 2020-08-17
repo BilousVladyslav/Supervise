@@ -1,9 +1,24 @@
-<div class="col mt-3">
-    <mat-card class="example-card mx-auto" style="max-width: 1200px">
-        <mat-card-content>
-            <p>
-            {{ 'home.about' | translate:locale.language }}
-            </p>
-        </mat-card-content>
-    </mat-card>
+<div class="container mb-5">
+    <h3 class="display-4 text-center my-5"> {{ 'home.title' | translate:locale.language }} </h3>
+    <div class="row">
+        <div class='col-5 align-self-center'>
+            <img class='w-100' src="../../../../assets/images/supervisers.png">
+        </div>
+        <div class="col-7">
+            <blockquote class="blockquote text-center">
+                <p class="mb-0">{{ 'home.about_first' | translate:locale.language }}</p>
+            </blockquote>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-8 align-self-center">
+            <blockquote class="blockquote text-center">
+                <p class="mb-0">{{ 'home.about_second' | translate:locale.language }}</p>
+            </blockquote>
+        </div>
+        <div class='col-4'>
+            <img class='w-100' src="../../../../assets/images/superviser.png">
+        </div>
+    </div>
 </div>
