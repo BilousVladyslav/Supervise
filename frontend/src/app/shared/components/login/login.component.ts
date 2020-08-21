@@ -11,8 +11,8 @@ import { L10N_LOCALE, L10nLocale } from 'angular-l10n';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
-  private subscription: Subscription;
+export class LoginComponent implements OnInit, OnDestroy {
+  private subscription: Subscription = new Subscription();
   submited: boolean;
   returnUrl: string;
   loginForm: FormGroup;

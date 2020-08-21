@@ -33,6 +33,6 @@ while True:
         area_url = URL + 'drone/areas/' + str(area['id']) + '/'
         requests.put(area_url, update_area_status)
 
-        time.sleep(1)
+        time.sleep(2)
 
-    time.sleep(1)
+    time.sleep(2)
