@@ -16,23 +16,26 @@ def get_workers_count(max_wokerrs_count):
 
 
 while True:
-    all_areas = requests.get(URL + 'drone/areas/').json()
+    try: 
+        all_areas = requests.get(URL + 'drone/areas/').json()
 
-    if len(all_areas) == 0:
-        logging.error('Create areas, because areas now does not exists.')
-        break
+        if len(all_areas) == 0:
+            logging.error('Create areas, because areas now does not exists.')
+            break
 
-    for area in all_areas:
+        for area in all_areas:
 
-        update_area_status = {
-            'working_now': get_workers_count(area['workers_count'])
-        }
+            update_area_status = {
+                'working_now': get_workers_count(area['workers_count'])
+            }
 
-        logging.warning(f' In area with id: {area["id"]} now working {update_area_status["working_now"]} workers.')
+            logging.warning(f' In area with id: {area["id"]} now working {update_area_status["working_now"]} workers.')
 
-        area_url = URL + 'drone/areas/' + str(area['id']) + '/'
-        requests.put(area_url, update_area_status)
+            area_url = URL + 'drone/areas/' + str(area['id']) + '/'
+            requests.put(area_url, update_area_status)
 
+            time.sleep(2)
+    except:
+        pass
+    finally:
         time.sleep(2)
-
-    time.sleep(2)

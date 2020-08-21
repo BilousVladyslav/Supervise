@@ -35,5 +35,16 @@ services:
       - POSTGRES_USER=user_name
       - POSTGRES_PASSWORD=password
       - POSTGRES_DB=supervise_db
+  iot:
+    build: 
+        context: ./iot
+        dockerfile: Dockerfile
+    command: python emulator.py
+    volumes:
+      - ./:/usr/src/app/iot/
+    depends_on:
+      - backend
+    env_file:
+      - ./iot/.env.dev
 volumes:
   postgres_data:
