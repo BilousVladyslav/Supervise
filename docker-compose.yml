@@ -39,7 +39,7 @@ services:
     build: 
         context: ./iot
         dockerfile: Dockerfile
-    command: python emulator.py
+    command: python iot/emulator.py
     volumes:
       - ./:/usr/src/app/iot/
     depends_on:
