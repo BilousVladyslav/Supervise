@@ -38,7 +38,7 @@ class CreateAreaSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Area
-        fields = ['title', 'description', 'workers_count', 'location']
+        fields = ['id', 'title', 'description', 'workers_count', 'location']
 
 
 class EditAreaSerializer(serializers.ModelSerializer):
