@@ -1,7 +1,7 @@
 <div class='col mx-3 my-5'>
     <div *ngIf="workObjectForm">
         <h3 class="display-4 text-center mb-5"> {{ 'objectEdit.workObject.title' | translate:locale.language }} </h3>
-        <form [formGroup]="workObjectForm" (ngSubmit)="saveWorkObject()" class="d-flex flex-column">
+        <form [formGroup]="workObjectForm" class="d-flex flex-column">
 
             <mat-form-field class="form-group mx-auto w-75">
                 <input matInput formControlName="name" placeholder="{{ 'objectEdit.workObject.name.placeholder' | translate:locale.language }}">
@@ -33,7 +33,9 @@
             </div>
         </form>
     </div>
+
     <mat-divider class='my-4'></mat-divider>
+    
     <div *ngIf="areasFormGroup && areasFormArray.length !== 0" [formGroup]='areasFormGroup'>
         <h3 class="text-center mb-3"> {{ 'objectEdit.areas.title' | translate:locale.language }} </h3>
 
@@ -84,9 +86,11 @@
                     </button>
                 </mat-card-actions>
             </mat-card>
-        
         </div>
-        <mat-divider class='my-4'></mat-divider>
+    </div>
+
+    <mat-divider class='my-4'></mat-divider>
+
     <div *ngIf="newAreaFormGroup">
         <h3 class="text-center mb-3"> {{ 'objectEdit.newArea.title' | translate:locale.language }} </h3>
 

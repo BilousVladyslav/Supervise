@@ -127,7 +127,8 @@ export class EditWorkObjectComponent implements OnInit, OnDestroy {
   }
 
   createNewArea(): void {
-    const createNewAreaViewmodel = this.newAreaFormGroup.value as CreateAreaModel;
+    let createNewAreaViewmodel = this.newAreaFormGroup.value as CreateAreaModel;
+    createNewAreaViewmodel.location = this.workObjectId;
     this.subscriptions.add(this.areasService.CreateArea(createNewAreaViewmodel).subscribe(
       area => {
         this.areasFormArray.push(this.createAreaForm(area));

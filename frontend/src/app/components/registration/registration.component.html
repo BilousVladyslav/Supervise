@@ -4,7 +4,7 @@
 
   <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="register-user-container">
     <mat-form-field class="form-group mx-auto">
-      <input matInput formControlName="username" style="color: white" placeholder="{{ 'register.username.placeholder' | translate:locale.language }}">
+      <input matInput formControlName="username" placeholder="{{ 'register.username.placeholder' | translate:locale.language }}">
       <mat-error *ngIf="registerForm.controls.username.errors && (registerForm.controls.username.dirty || registerForm.controls.username.touched)">
         <mat-error *ngIf="registerForm.controls.username.errors.required" class="error-message">
           *{{ 'register.username.required' | translate:locale.language }}
@@ -13,7 +13,7 @@
     </mat-form-field>
 
     <mat-form-field class="form-group mx-auto">
-      <input matInput formControlName="email" style="color: white" type="text" placeholder="{{ 'register.email.placeholder' | translate:locale.language }}">
+      <input matInput formControlName="email" type="text" placeholder="{{ 'register.email.placeholder' | translate:locale.language }}">
       <mat-error *ngIf="registerForm.controls.email.errors && (registerForm.controls.email.dirty || registerForm.controls.email.touched)">
         <mat-error *ngIf="registerForm.controls.email.errors.pattern">
           *{{ 'register.email.required' | translate:locale.language }} <strong>{{ 'register.email.strong' | translate:locale.language }}</strong>
@@ -22,7 +22,7 @@
     </mat-form-field>
 
     <mat-form-field class="form-group mx-auto">
-      <input matInput formControlName="password" style="color: white" type="text" type="password" placeholder="{{ 'register.password.placeholder' | translate:locale.language }}">
+      <input matInput formControlName="password" type="text" type="password" placeholder="{{ 'register.password.placeholder' | translate:locale.language }}">
       <mat-error *ngIf="registerForm.controls.password.errors && (registerForm.controls.password.dirty || registerForm.controls.password.touched)">
         <mat-error *ngIf="registerForm.controls.password.errors.required">
           *{{ 'register.password.required' | translate:locale.language }}
@@ -37,7 +37,7 @@
     </mat-form-field>
 
     <mat-form-field class="form-group mx-auto">
-      <input matInput formControlName="confirm_password" style="color: white" type="text" type="password" placeholder="{{ 'register.password_confirm.placeholder' | translate:locale.language }}">
+      <input matInput formControlName="confirm_password" type="text" type="password" placeholder="{{ 'register.password_confirm.placeholder' | translate:locale.language }}">
       <mat-error *ngIf="registerForm.controls.confirm_password.errors && (registerForm.controls.confirm_password.dirty || registerForm.controls.confirm_password.touched)">
         <mat-error *ngIf="registerForm.controls.confirm_password.errors.required" class="error-message">
           *{{ 'register.password_confirm.required' | translate:locale.language }}
@@ -49,7 +49,7 @@
     </mat-form-field>
 
     <mat-form-field class="form-group mx-auto">
-      <input matInput formControlName="first_name" style="color: white" placeholder="{{ 'register.first_name.placeholder' | translate:locale.language }}">
+      <input matInput formControlName="first_name" placeholder="{{ 'register.first_name.placeholder' | translate:locale.language }}">
       <mat-error *ngIf="registerForm.controls.first_name.errors && (registerForm.controls.first_name.dirty || registerForm.controls.first_name.touched)">
         <mat-error *ngIf="registerForm.controls.first_name.errors.required">
           *{{ 'register.first_name.required' | translate:locale.language }}
@@ -64,7 +64,7 @@
     </mat-form-field>
 
     <mat-form-field class="form-group mx-auto">
-      <input matInput formControlName="last_name" style="color: white" placeholder="{{ 'register.last_name.placeholder' | translate:locale.language }}">
+      <input matInput formControlName="last_name" placeholder="{{ 'register.last_name.placeholder' | translate:locale.language }}">
       <mat-error *ngIf="registerForm.controls.last_name.errors && (registerForm.controls.last_name.dirty || registerForm.controls.last_name.touched)">
         <mat-error *ngIf="registerForm.controls.last_name.errors.required">
           *{{ 'register.last_name.required' | translate:locale.language }}
@@ -83,7 +83,7 @@
     </div>
 
     <div class='mx-auto'>
-      <button mat-raised-button class="mx-auto" color="accent" [disabled]="registerForm.valid">{{ 'register.submit' | translate:locale.language }}</button>
+      <button mat-raised-button class="mx-auto" color="accent" [disabled]="registerForm.invalid">{{ 'register.submit' | translate:locale.language }}</button>
     </div>
   </form>
 </div>
